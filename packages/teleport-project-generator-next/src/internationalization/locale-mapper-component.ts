@@ -29,7 +29,7 @@ export const USE_ROUTER_HOOK: UIDLExternalDependency = {
 
 export const USE_GLOBAL_CONTEXT_HOOK: UIDLDependency = {
   type: 'local',
-  path: '../global-context',
+  path: '@/global-context',
   meta: {
     namedImport: true,
   },
