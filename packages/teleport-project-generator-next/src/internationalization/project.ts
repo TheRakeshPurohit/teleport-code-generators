@@ -42,6 +42,18 @@ const findFileInTemplate = (
   return file
 }
 
+const generateJsConfigFile = () => {
+  return `
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}`
+}
+
 const generateGlobalContextFileContent = (
   locales: Record<string, string>,
   main: {
@@ -147,6 +159,18 @@ export class NextProjectPlugini18nConfig implements ProjectPlugin {
           name: 'global-context',
           content: globalContextFile,
           fileType: FileType.JS,
+        },
+      ],
+    })
+
+    const jsConfigFile = generateJsConfigFile()
+    files.set('jsconfig.json', {
+      path: [],
+      files: [
+        {
+          name: 'jsconfig',
+          content: jsConfigFile,
+          fileType: FileType.JSON,
         },
       ],
     })
