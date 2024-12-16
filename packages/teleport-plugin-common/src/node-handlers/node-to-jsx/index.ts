@@ -123,8 +123,12 @@ const addAttributesToJSXTag = (
   options: JSXGenerationOptions,
   params: JSXGenerationParams
 ) => {
-  Object.keys(attrs).forEach((attrKey) => {
+  Object.keys(attrs ?? {}).forEach((attrKey) => {
     const attributeValue = attrs[attrKey]
+
+    if (!attributeValue.type) {
+      return
+    }
 
     switch (attributeValue.type) {
       case 'dynamic':

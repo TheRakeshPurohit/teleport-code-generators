@@ -198,6 +198,10 @@ export const traverseNodes = (
   fn: (node: UIDLNode | UIDLComponentStyleReference, parentNode: UIDLNode) => void,
   parent: UIDLNode | null = null
 ) => {
+  if (!node.type) {
+    return
+  }
+
   fn(node, parent)
 
   switch (node.type) {
